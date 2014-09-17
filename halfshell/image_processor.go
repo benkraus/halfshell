@@ -22,7 +22,7 @@ package halfshell
 
 import (
 	"fmt"
-	"github.com/rafikk/imagick/imagick"
+	"github.com/gographics/imagick/imagick"
 	"math"
 	"strings"
 )

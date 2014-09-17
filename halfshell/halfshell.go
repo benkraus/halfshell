@@ -21,7 +21,7 @@
 package halfshell
 
 import (
-	"github.com/rafikk/imagick/imagick"
+	"github.com/gographics/imagick/imagick"
 	"os"
 	"text/template"
 )
