@@ -24,6 +24,7 @@ import (
 	"fmt"
 	"net"
 	"net/http"
+	"os"
 	"time"
 )
 
@@ -34,8 +35,11 @@ type Server struct {
 }
 
 func NewServerWithConfigAndRoutes(config *ServerConfig, routes []*Route) *Server {
+	// On heroku the port to use exists in the PORT env var, so ignore the config value
+	port := os.Getenv("PORT")
+
 	httpServer := &http.Server{
-		Addr:           fmt.Sprintf(":%d", config.Port),
+		Addr:           fmt.Sprintf(":%s", port),
 		ReadTimeout:    time.Duration(config.ReadTimeout) * time.Second,
 		WriteTimeout:   time.Duration(config.WriteTimeout) * time.Second,
 		MaxHeaderBytes: 1 << 20,
